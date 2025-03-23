@@ -1,0 +1,21 @@
+name: CI Pipeline
+
+on: [push, pull_request]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Haal de code op
+        uses: actions/checkout@v3
+
+      - name: Installeer Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Installeer dependencies
+        run: npm install
+
+      - name: Voer tests uit
+        run: npm test
